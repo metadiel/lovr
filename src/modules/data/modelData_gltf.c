@@ -135,7 +135,7 @@ static jsmntok_t* nomTexture(const char* json, jsmntok_t* token, uint32_t* image
       gltfTexture* texture = &textures[index];
       *imageIndex = texture->image;
     } else if (STR_EQ(key, "texCoord")) {
-      lovrAssert(NOM_INT(json, token) == 0, "Currently, only one set of texture coordinates is supported");
+      // lovrAssert(NOM_INT(json, token) == 0, "Currently, only one set of texture coordinates is supported");
     } else if (material && STR_EQ(key, "extensions")) {
       for (int j = (token++)->size; j > 0; j--) {
         gltfString key = NOM_STR(json, token);
@@ -814,6 +814,7 @@ ModelData* lovrModelDataInitGltf(ModelData* model, Blob* source, ModelDataIO* io
                   if (STR_EQ(name, "POSITION")) { attributeType = ATTR_POSITION; }
                   else if (STR_EQ(name, "NORMAL")) { attributeType = ATTR_NORMAL; }
                   else if (STR_EQ(name, "TEXCOORD_0")) { attributeType = ATTR_UV; }
+                  else if (STR_EQ(name, "TEXCOORD_1")) { attributeType = ATTR_UV; }
                   else if (STR_EQ(name, "COLOR_0")) { attributeType = ATTR_COLOR; }
                   else if (STR_EQ(name, "TANGENT")) { attributeType = ATTR_TANGENT; }
                   else if (STR_EQ(name, "JOINTS_0")) { attributeType = ATTR_JOINTS; }
